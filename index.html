@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIG 5性格特性診断テスト (BFI-10)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-indigo-800 mb-2">
+                <i class="fas fa-brain mr-3"></i>BIG 5性格特性診断テスト
+            </h1>
+            <p class="text-lg text-gray-600">BFI-10 (ベアトリス・ラムステッド、オリバー・ジョン, 2007)</p>
+            <div class="mt-4 p-4 bg-white rounded-lg shadow-md">
+                <p class="text-sm text-gray-700">
+                    このテストは10項目の質問で、あなたの性格の5つの主要な特性を測定します。<br>
+                    各質問に対して、最も当てはまる選択肢を選んでください。
+                </p>
+            </div>
+        </div>
+
+        <!-- Test Form -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+            <form id="personalityTest">
+                <div class="space-y-6">
+                    <!-- Question 1 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">①</span>
+                            能動的な想像力を持ち合わせている
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q1" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q1" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q1" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q1" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q1" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">②</span>
+                            芸術への関心は殆ど持ち合わせていない
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q2" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q2" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q2" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q2" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q2" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">③</span>
+                            丁寧な仕事をする
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q3" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q3" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q3" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q3" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q3" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">④</span>
+                            なまけがちだ
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q4" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q4" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q4" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q4" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q4" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">⑤</span>
+                            一般的に信頼できる
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q5" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q5" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q5" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q5" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q5" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">⑥</span>
+                            他人の欠点を探しがちだ
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q6" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q6" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q6" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q6" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q6" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">⑦</span>
+                            ゆったりしていて、ストレスにうまく対処できる
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q7" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q7" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q7" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q7" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q7" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">⑧</span>
+                            すぐにくよくよする
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q8" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q8" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q8" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q8" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q8" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">⑨</span>
+                            外に出かけるのが好きで、社交的だ
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q9" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q9" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q9" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q9" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q9" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="question-item">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm mr-3">⑩</span>
+                            遠慮がちだ
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q10" value="1" class="mr-2">
+                                <span class="text-sm text-center">全く当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q10" value="2" class="mr-2">
+                                <span class="text-sm text-center">あまり当てはまらない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q10" value="3" class="mr-2">
+                                <span class="text-sm text-center">どちらでもない</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q10" value="4" class="mr-2">
+                                <span class="text-sm text-center">やや当てはまる</span>
+                            </label>
+                            <label class="flex items-center justify-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q10" value="5" class="mr-2">
+                                <span class="text-sm text-center">非常に当てはまる</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center mt-8">
+                    <button type="button" id="calculateButton" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg transform transition hover:scale-105">
+                        <i class="fas fa-calculator mr-2"></i>結果を表示
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="hidden bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-center text-indigo-800 mb-8">
+                <i class="fas fa-chart-radar mr-3"></i>診断結果
+            </h2>
+            
+            <!-- Scores -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+                <div class="text-center p-4 bg-gradient-to-br from-red-100 to-red-200 rounded-lg">
+                    <h3 class="font-bold text-red-800">外向性</h3>
+                    <div id="extraversionScore" class="text-2xl font-bold text-red-700 mt-2"></div>
+                    <div id="extraversionLevel" class="text-sm text-red-600 mt-1"></div>
+                </div>
+                <div class="text-center p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg">
+                    <h3 class="font-bold text-blue-800">協調性</h3>
+                    <div id="agreeablenessScore" class="text-2xl font-bold text-blue-700 mt-2"></div>
+                    <div id="agreeablenessLevel" class="text-sm text-blue-600 mt-1"></div>
+                </div>
+                <div class="text-center p-4 bg-gradient-to-br from-green-100 to-green-200 rounded-lg">
+                    <h3 class="font-bold text-green-800">誠実性</h3>
+                    <div id="conscientiousnessScore" class="text-2xl font-bold text-green-700 mt-2"></div>
+                    <div id="conscientiousnessLevel" class="text-sm text-green-600 mt-1"></div>
+                </div>
+                <div class="text-center p-4 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg">
+                    <h3 class="font-bold text-yellow-800">情動の安定性</h3>
+                    <div id="stabilityScore" class="text-2xl font-bold text-yellow-700 mt-2"></div>
+                    <div id="stabilityLevel" class="text-sm text-yellow-600 mt-1"></div>
+                </div>
+                <div class="text-center p-4 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg">
+                    <h3 class="font-bold text-purple-800">経験への開放性</h3>
+                    <div id="opennessScore" class="text-2xl font-bold text-purple-700 mt-2"></div>
+                    <div id="opennessLevel" class="text-sm text-purple-600 mt-1"></div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="mb-8">
+                <canvas id="personalityChart" style="height: 400px;"></canvas>
+            </div>
+
+            <!-- Detailed Descriptions -->
+            <div class="space-y-6">
+                <div class="bg-red-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-red-800 mb-3"><i class="fas fa-users mr-2"></i>外向性</h3>
+                    <p class="text-gray-700">社交性、活発性、積極性を表します。高いスコアは外向的で人との交流を好む傾向を、低いスコアは内向的で一人の時間を好む傾向を示します。</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3"><i class="fas fa-handshake mr-2"></i>協調性</h3>
+                    <p class="text-gray-700">他者への思いやり、協力的な態度を表します。高いスコアは協力的で信頼しやすい傾向を、低いスコアは競争的で懐疑的な傾向を示します。</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-green-800 mb-3"><i class="fas fa-target mr-2"></i>誠実性</h3>
+                    <p class="text-gray-700">責任感、計画性、自己統制力を表します。高いスコアは組織的で目標達成志向が強い傾向を、低いスコアは柔軟で自発的な傾向を示します。</p>
+                </div>
+                <div class="bg-yellow-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-yellow-800 mb-3"><i class="fas fa-heart mr-2"></i>情動の安定性</h3>
+                    <p class="text-gray-700">ストレス耐性、感情の安定性を表します。高いスコアは冷静で安定している傾向を、低いスコアは感情的で不安になりやすい傾向を示します。</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-purple-800 mb-3"><i class="fas fa-lightbulb mr-2"></i>経験への開放性</h3>
+                    <p class="text-gray-700">創造性、知的好奇心、新しい経験への興味を表します。高いスコアは創造的で新しいことを好む傾向を、低いスコアは伝統的で慣習を重視する傾向を示します。</p>
+                </div>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="text-center mt-8">
+                <button type="button" id="resetButton" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg">
+                    <i class="fas fa-redo mr-2"></i>もう一度テストする
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculateButton = document.getElementById('calculateButton');
+            const resetButton = document.getElementById('resetButton');
+            const resultsSection = document.getElementById('results');
+            const form = document.getElementById('personalityTest');
+
+            calculateButton.addEventListener('click', function() {
+                if (validateForm()) {
+                    calculateScores();
+                    showResults();
+                } else {
+                    alert('すべての質問に回答してください。');
+                }
+            });
+
+            resetButton.addEventListener('click', function() {
+                form.reset();
+                resultsSection.classList.add('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            function validateForm() {
+                for (let i = 1; i <= 10; i++) {
+                    const inputs = document.querySelectorAll(`input[name="q${i}"]`);
+                    let answered = false;
+                    inputs.forEach(input => {
+                        if (input.checked) answered = true;
+                    });
+                    if (!answered) return false;
+                }
+                return true;
+            }
+
+            function getAnswer(questionNumber) {
+                const selected = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+                return selected ? parseInt(selected.value) : 0;
+            }
+
+            function calculateScores() {
+                // Get answers
+                const answers = {};
+                for (let i = 1; i <= 10; i++) {
+                    answers[`q${i}`] = getAnswer(i);
+                }
+
+                // Calculate scores according to BFI-10 formula
+                const scores = {
+                    extraversion: answers.q9 - answers.q10,      // ⑩－⑨ 外向性
+                    agreeableness: answers.q5 - answers.q6,      // ⑤－⑥ 協調性
+                    conscientiousness: answers.q3 - answers.q4,  // ③－④ 誠実性
+                    stability: answers.q7 - answers.q8,          // ⑦－⑧ 情動の安定性
+                    openness: answers.q1 - answers.q2            // ①－② 経験への開放性
+                };
+
+                // Display scores
+                document.getElementById('extraversionScore').textContent = scores.extraversion;
+                document.getElementById('agreeablenessScore').textContent = scores.agreeableness;
+                document.getElementById('conscientiousnessScore').textContent = scores.conscientiousness;
+                document.getElementById('stabilityScore').textContent = scores.stability;
+                document.getElementById('opennessScore').textContent = scores.openness;
+
+                // Display levels
+                document.getElementById('extraversionLevel').textContent = getLevel(scores.extraversion);
+                document.getElementById('agreeablenessLevel').textContent = getLevel(scores.agreeableness);
+                document.getElementById('conscientiousnessLevel').textContent = getLevel(scores.conscientiousness);
+                document.getElementById('stabilityLevel').textContent = getLevel(scores.stability);
+                document.getElementById('opennessLevel').textContent = getLevel(scores.openness);
+
+                // Create chart
+                createChart(scores);
+            }
+
+            function getLevel(score) {
+                if (score >= 3) return 'とても高い';
+                if (score >= 1) return '高い';
+                if (score >= -1) return '平均的';
+                if (score >= -3) return '低い';
+                return 'とても低い';
+            }
+
+            function createChart(scores) {
+                const ctx = document.getElementById('personalityChart').getContext('2d');
+                
+                // Destroy existing chart if it exists
+                if (window.personalityChart instanceof Chart) {
+                    window.personalityChart.destroy();
+                }
+
+                // Convert scores to positive values for chart display (add 4 to make range 0-8)
+                const chartData = {
+                    extraversion: scores.extraversion + 4,
+                    agreeableness: scores.agreeableness + 4,
+                    conscientiousness: scores.conscientiousness + 4,
+                    stability: scores.stability + 4,
+                    openness: scores.openness + 4
+                };
+
+                window.personalityChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['外向性', '協調性', '誠実性', '情動の安定性', '経験への開放性'],
+                        datasets: [{
+                            label: 'あなたの性格特性',
+                            data: [
+                                chartData.extraversion,
+                                chartData.agreeableness,
+                                chartData.conscientiousness,
+                                chartData.stability,
+                                chartData.openness
+                            ],
+                            backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                            borderColor: 'rgba(79, 70, 229, 1)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(79, 70, 229, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(79, 70, 229, 1)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 8,
+                                min: 0,
+                                ticks: {
+                                    stepSize: 1,
+                                    callback: function(value) {
+                                        // Convert back to original scale (-4 to +4)
+                                        return (value - 4).toString();
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                },
+                                angleLines: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function showResults() {
+                resultsSection.classList.remove('hidden');
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDpwLf9k3UCfq3mj3TFrePc5x7Rl3NDkKqRXIqWxETdlk566IqRQPSTENwBndmmuhHw9U3bxBJ0OKf0vp6UBpECII6MIXfdziIA7ZCrpafk4fooA3Gn7RXA58I9Y0Lc21z5CEpqQ3lr9oEPZnhjnYE3y%2F0VF5X9mPaz9oiDKsUh2f8%2Bk6h5ijTm9s0AkBsqIa6vkQnBZTsWEAzNwEuQ%2B1ubdpXg5HNcBjyOgu%2FELdmdWU4oDFpPOK3EmKh6jofamLVsoZ9zLfLCzB2BT23%2FecVqWlJXhAdUK4wGx1o49QM7T55mK0TbFXfnNPsq0agBdO14oZA40b7vVPuopp8P3nCe92fJSsXt7WaUK%2B4aOBUjApNtqg77tM5mTQJndSX7YmtWAZ7cyvd09KbC15SAMa3GhLBJSa%2BqSR0yMO2Fw%2BABs%2FEBBNaMlTsbIjzfMop12cefzeMirTa5FBHq5Jo%2FFlgLHMQVrNxsXMUiMrNSfU6adYHtpdzMwnWGypmHDxC6pNmWeIhHjIA7YeVKR17MQ3T%2FY%3D";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDpwLf9k3UCfq3mj3TFrePc5x7Rl3NDkKqRXIqWxETdlk566IqRQPSTENwBndmmuhHw9U3bxBJ0OKf0vp6UBpECII6MIXfdziIA7ZCrpafk4fooA3Gn7RXA58I9Y0Lc21z5CEpqQ3lr9oEPZnhjnYE3y/0VF5X9mPaz9oiDKsUh2f8+k6h5ijTm9s0AkBsqIa6vkQnBZTsWEAzNwEuQ+1ubdpXg5HNcBjyOgu/ELdmdWU4oDFpPOK3EmKh6jofamLVsoZ9zLfLCzB2BT23/ecVqWlJXhAdUK4wGx1o49QM7T55mK0TbFXfnNPsq0agBdO14oZA40b7vVPuopp8P3nCe92fJSsXt7WaUK+4aOBUjApNtqg77tM5mTQJndSX7YmtWAZ7cyvd09KbC15SAMa3GhLBJSa+qSR0yMO2Fw+ABs/EBBNaMlTsbIjzfMop12cefzeMirTa5FBHq5Jo/FlgLHMQVrNxsXMUiMrNSfU6adYHtpdzMwnWGypmHDxC6pNmWeIhHjIA7YeVKR17MQ3T/Y=";
+    </script>
+    
+        <script id="html_badge_script2" src="https://www.genspark.ai/html_badge.js"></script>
+        
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
